@@ -6,7 +6,7 @@ const signIn= () => {
   return (
     <View className='items-center justify-center h-screen'>
       <Text>sign-in</Text>
-      <Link href={"/"}> Home</Link>
+      <Link href={"/"} className='bg-primary p-4 text-white rounded-2xl'> Home</Link>
     </View>
   )
 }
