@@ -5,7 +5,7 @@ export function formatCurrency(
   currency: string = "INR",
 ): string {
   try {
-    const formatter = new Intl.NumberFormat("en-IN", {
+    const formatter = new Intl.NumberFormat("INR", {
       style: "currency",
       currency: currency,
       minimumFractionDigits: 2,
@@ -21,7 +21,7 @@ export function formatCurrency(
 export const formatSubscriptionDateTime = (value?: string): string => {
   if (!value) return "Not provided";
   const parsedDate = dayjs(value);
-  return parsedDate.isValid() ? parsedDate.format("MM/DD/YYYY") : "Not provided";
+  return parsedDate.isValid() ? parsedDate.format("DD/MM/YYYY") : "Not provided";
 };
 
 export const formatStatusLabel = (value?: string): string => {

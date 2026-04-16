@@ -4,6 +4,7 @@ import { formatCurrency,formatSubscriptionDateTime,formatStatusLabel } from '@/l
 import clsx from 'clsx'
 
 const SubscriptionCard = ({name, price, currency, icon, billing, color, category, plan, renewalDate, expanded, onPress,paymentMethod,startDate, status}:SubscriptionCardProps) => {
+    const fallback = "Not provided"
   return (
     <Pressable onPress={onPress} className={clsx('sub-card', expanded ? 'sub-card-expanded':'bg-card')} style={!expanded && color ? {backgroundColor: color}: undefined}>
         <View className='sub-head'>
@@ -46,7 +47,7 @@ const SubscriptionCard = ({name, price, currency, icon, billing, color, category
                         <View className='sub-row-copy'>
                             <Text className='sub-label'>Started:</Text>
                             <Text className='sub-value' numberOfLines={1} ellipsizeMode='tail'>
-                                {startDate ? formatSubscriptionDateTime(startDate): ""}
+                                {startDate ? formatSubscriptionDateTime(startDate): fallback}
                             </Text>
                         </View>
                     </View>
@@ -54,7 +55,7 @@ const SubscriptionCard = ({name, price, currency, icon, billing, color, category
                         <View className='sub-row-copy'>
                             <Text className='sub-label'>Renewal:</Text>
                             <Text className='sub-value' numberOfLines={1} ellipsizeMode='tail'>
-                                {renewalDate ? formatSubscriptionDateTime(renewalDate): ""}
+                                {renewalDate ? formatSubscriptionDateTime(renewalDate): fallback}
                             </Text>
                         </View>
                     </View>
@@ -62,7 +63,7 @@ const SubscriptionCard = ({name, price, currency, icon, billing, color, category
                         <View className='sub-row-copy'>
                             <Text className='sub-label'>Status:</Text>
                             <Text className='sub-value' numberOfLines={1} ellipsizeMode='tail'>
-                                {status ? formatStatusLabel(status): ""}
+                                {status ? formatStatusLabel(status): fallback}
                             </Text>
                         </View>
                     </View>
