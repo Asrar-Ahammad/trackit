@@ -2,9 +2,9 @@ import ListHeading from "@/components/ListHeading";
 import SubscriptionCard from "@/components/SubscriptionCard";
 import UpcomingSubscriptionCards from "@/components/UpcomingSubscriptionCards";
 import {
-  HOME_BALANCE,
-  HOME_SUBSCRIPTIONS,
-  UPCOMING_SUBSCRIPTIONS,
+    HOME_BALANCE,
+    HOME_SUBSCRIPTIONS,
+    UPCOMING_SUBSCRIPTIONS,
 } from "@/constants/data";
 import { icons } from "@/constants/icons";
 import "@/global.css";
@@ -38,9 +38,9 @@ export default function App() {
                   className="home-avatar"
                 />
                 <Text className="home-user-name">
-                  {(`${user?.firstName} ${user?.lastName}`) ||
-                    user?.emailAddresses[0]?.emailAddress ||
-                    "User"}
+                  {user?.firstName || user?.lastName
+                    ? `${user?.firstName} ${user?.lastName}`
+                    : user?.emailAddresses?.[0]?.emailAddress || "User"}
                 </Text>
               </View>
               <View className="p-2 border-[1px] border-gray-400 rounded-full">
