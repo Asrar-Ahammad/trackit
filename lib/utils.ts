@@ -14,7 +14,7 @@ export function formatCurrency(
     return formatter.format(value);
   } catch (error) {
     // Fallback: format as ₹ with two decimal places
-    return `₹${value.toFixed(2)}`;
+    return `₹ ${value.toFixed(2)}`;
   }
 }
 
