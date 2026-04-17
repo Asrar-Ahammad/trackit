@@ -3,7 +3,7 @@ import "@/global.css";
 import { ClerkProvider } from "@clerk/expo";
 import { tokenCache } from "@clerk/expo/token-cache";
 import { useFonts } from "expo-font";
-import { SplashScreen, Stack } from "expo-router";
+import { Slot, SplashScreen } from "expo-router";
 import { useEffect } from "react";
 import { ActivityIndicator, View } from "react-native";
 
@@ -42,7 +42,7 @@ function RootLayoutInner() {
     );
   }
 
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return <Slot />;
 }
 
 export default function RootLayout() {

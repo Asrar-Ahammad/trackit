@@ -1,17 +1,23 @@
-import { AuthButton, AuthCard, AuthInput, AuthText } from "@/components/auth";
+import {
+    AuthButton,
+    AuthCard,
+    AuthInput,
+    AuthPasswordInput,
+    AuthText,
+} from "@/components/auth";
 import { colors } from "@/constants/theme";
 import {
-  formatClerkError,
-  validateEmail,
-  validatePassword,
-  validateVerificationCode,
+    formatClerkError,
+    validateEmail,
+    validatePassword,
+    validateVerificationCode,
 } from "@/lib/auth-validation";
 import { useSignUp } from "@clerk/expo";
 import { Link, useRouter } from "expo-router";
+import { styled } from "nativewind";
 import React, { useState } from "react";
-import { Pressable, ScrollView, Text, View } from "react-native";
-import { SafeAreaView as RNSafeAreaView} from "react-native-safe-area-context";
-import { styled } from 'nativewind'
+import { Pressable, ScrollView, View } from "react-native";
+import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
 const SafeAreaView = styled(RNSafeAreaView);
 
 type SignUpStep = "credentials" | "verify";
@@ -184,7 +190,7 @@ export default function SignUpScreen() {
                 testID="email-input"
               />
 
-              <AuthInput
+              <AuthPasswordInput
                 label="Password"
                 placeholder="At least 8 characters"
                 value={password}
@@ -192,7 +198,6 @@ export default function SignUpScreen() {
                   setPassword(text);
                   if (errors.password) setErrors({ ...errors, password: "" });
                 }}
-                secureTextEntry={true}
                 autoCapitalize="none"
                 autoComplete="password"
                 error={errors.password}

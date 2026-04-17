@@ -1,4 +1,10 @@
-import { AuthButton, AuthCard, AuthInput, AuthText } from "@/components/auth";
+import {
+    AuthButton,
+    AuthCard,
+    AuthInput,
+    AuthPasswordInput,
+    AuthText,
+} from "@/components/auth";
 import { colors } from "@/constants/theme";
 import {
     formatClerkError,
@@ -8,10 +14,10 @@ import {
 } from "@/lib/auth-validation";
 import { useSignIn } from "@clerk/expo";
 import { Link, useRouter } from "expo-router";
+import { styled } from "nativewind";
 import React, { useState } from "react";
-import { Pressable, ScrollView, Text, View } from "react-native";
-import { SafeAreaView as RNSafeAreaView} from "react-native-safe-area-context";
-import { styled } from 'nativewind'
+import { Pressable, ScrollView, View } from "react-native";
+import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
 const SafeAreaView = styled(RNSafeAreaView);
 
 type SignInStep = "credentials" | "mfa";
@@ -180,7 +186,7 @@ export default function SignInScreen() {
                 testID="email-input"
               />
 
-              <AuthInput
+              <AuthPasswordInput
                 label="Password"
                 placeholder="Enter your password"
                 value={password}
@@ -188,7 +194,6 @@ export default function SignInScreen() {
                   setPassword(text);
                   if (errors.password) setErrors({ ...errors, password: "" });
                 }}
-                secureTextEntry={true}
                 autoCapitalize="none"
                 autoComplete="password"
                 error={errors.password}
