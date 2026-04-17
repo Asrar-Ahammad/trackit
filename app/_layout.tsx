@@ -1,5 +1,6 @@
 import { colors } from "@/constants/theme";
 import "@/global.css";
+import { SubscriptionsProvider } from "@/lib/subscriptions-context";
 import { ClerkProvider } from "@clerk/expo";
 import { tokenCache } from "@clerk/expo/token-cache";
 import { useFonts } from "expo-font";
@@ -48,7 +49,9 @@ function RootLayoutInner() {
 export default function RootLayout() {
   return (
     <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
-      <RootLayoutInner />
+      <SubscriptionsProvider>
+        <RootLayoutInner />
+      </SubscriptionsProvider>
     </ClerkProvider>
   );
 }
